@@ -8,7 +8,7 @@ Alison Dayana Andrango Nieto
 
 Este proyecto consiste en el desarrollo de un sistema básico de gestión para un restaurante utilizando Programación Orientada a Objetos en Python.
 
-El sistema permite registrar productos, bebidas y clientes mediante un menú interactivo ejecutado desde consola. Además, se aplican principios SOLID como responsabilidad única, abierto/cerrado y sustitución de Liskov, con el objetivo de mantener una estructura organizada, modular y fácil de ampliar.
+El sistema permite registrar productos, bebidas y clientes mediante un menú interactivo ejecutado desde consola. Además, se aplican principios SOLID como responsabilidad única, abierto/cerrado y sustitución de Liskov, con la finalidad de mantener una estructura organizada, modular y fácil de ampliar.
 
 ## Estructura del proyecto
 
@@ -26,76 +26,93 @@ restaurante_app/
 │   └── restaurante.py
 │
 └── main.py
+```
 
-Responsabilidad de las clases
-Producto
-Representa los datos generales de un producto del restaurante, como nombre, código, precio y categoría. Contiene el método mostrar_informacion() para mostrar sus datos.
+## Responsabilidad de las clases
 
-Bebida
-Hereda de la clase Producto e incorpora información específica como el tamaño de la bebida. Sobrescribe el método mostrar_informacion() para mostrar sus características.
+### Producto
 
-Cliente
-Representa la información de los clientes registrados, como nombre, correo e identificación.
+Representa los datos generales de un producto del restaurante, como nombre, código, precio y categoría. Además, contiene el método `mostrar_informacion()` para mostrar sus datos.
 
-Restaurante
-Es la clase encargada de administrar los productos y clientes. Permite registrar, listar y validar que no existan códigos o identificaciones repetidas.
+### Bebida
 
-main.py
-Es el punto de inicio del programa. Se encarga del menú interactivo, solicitar datos mediante input(), crear objetos y comunicarse con la clase Restaurante.
+Hereda de la clase Producto porque una bebida representa un tipo específico de producto dentro del restaurante. Esta clase agrega información propia como el tamaño y sobrescribe el método `mostrar_informacion()` para mostrar sus características.
 
-Aplicación de principios SOLID
-Responsabilidad única (SRP)
-Cada clase cumple una función específica: Producto y Bebida representan productos, Cliente representa clientes, Restaurante administra las operaciones y main.py controla la interacción con el usuario.
+### Cliente
 
-Abierto/Cerrado (OCP)
-La clase Bebida permite ampliar el sistema agregando un nuevo tipo de producto sin modificar la lógica principal de Restaurante.
+Representa la información de los clientes registrados en el restaurante, como nombre, correo e identificación.
 
-Sustitución de Liskov (LSP)
-Los objetos Producto y Bebida pueden almacenarse en la misma lista y utilizar el método mostrar_informacion() sin necesidad de diferenciarlos mediante condiciones.
+### Restaurante
 
-Funcionamiento del sistema
+Es la clase encargada de administrar los productos y clientes. Permite registrar nuevos elementos, listar la información y validar que no existan códigos de productos o identificaciones repetidas.
+
+### main.py
+
+Es el punto de inicio del programa. Se encarga de mostrar el menú interactivo, solicitar los datos mediante `input()`, crear los objetos y comunicarse con la clase Restaurante.
+
+## Aplicación de principios SOLID
+
+### Responsabilidad única (SRP)
+
+Cada clase cumple una función específica dentro del sistema:
+
+- Producto y Bebida representan los productos del restaurante.
+- Cliente representa la información de los clientes.
+- Restaurante administra las operaciones y colecciones.
+- `main.py` controla la interacción con el usuario.
+
+Esto permite mantener el código más organizado y fácil de modificar.
+
+### Abierto/Cerrado (OCP)
+
+La clase Bebida permite ampliar el sistema agregando un nuevo tipo de producto sin modificar la lógica principal de la clase Restaurante.
+
+### Sustitución de Liskov (LSP)
+
+Los objetos Producto y Bebida pueden almacenarse dentro de la misma lista y utilizar el método común `mostrar_informacion()` sin necesidad de utilizar condiciones para diferenciarlos.
+
+## Funcionamiento del sistema
+
 El sistema permite:
 
+- Registrar productos.
+- Registrar bebidas.
+- Registrar clientes.
+- Listar productos y bebidas.
+- Listar clientes.
+- Validar códigos de productos repetidos.
+- Validar identificaciones de clientes repetidas.
 
-Registrar productos.
-
-Registrar bebidas.
-
-Registrar clientes.
-
-Listar productos y bebidas.
-
-Listar clientes.
-
-Validar códigos de productos repetidos.
-
-Validar identificaciones de clientes repetidas.
 Los objetos son creados a partir de los datos ingresados por el usuario mediante consola.
 
-Ejecución del proyecto
+## Relación entre Producto y Bebida
+
+La relación entre Producto y Bebida se basa en la herencia.
+
+Una Bebida es un tipo específico de Producto, por lo que puede utilizar los atributos generales como nombre, código, precio y categoría, pero también puede agregar características propias como el tamaño.
+
+Esto permite aplicar polimorfismo, ya que ambas clases pueden utilizar el método común `mostrar_informacion()`.
+
+## Ejecución del proyecto
+
 Para ejecutar el programa se utiliza:
 
-
+```bash
 python main.py
+```
 
+Al iniciar el programa aparecerá un menú interactivo donde el usuario podrá seleccionar las diferentes opciones disponibles.
 
-El sistema mostrará un menú interactivo donde el usuario podrá seleccionar las opciones disponibles.
+## Pruebas realizadas
 
-Relación entre Producto y Bebida
-La clase Bebida utiliza herencia porque representa un tipo específico de Producto. Esto permite reutilizar atributos y aplicar polimorfismo, ya que ambas clases pueden utilizar el método común mostrar_informacion().
-
-Pruebas realizadas
 Se comprobó el funcionamiento del sistema mediante:
 
+- Registro de productos, bebidas y clientes.
+- Listado de información registrada.
+- Validación de códigos duplicados.
+- Validación de identificaciones duplicadas.
+- Ejecución correcta desde `main.py`.
 
-Registro de productos, bebidas y clientes.
+## Reflexión
 
-Listado de información registrada.
-
-Validación de códigos duplicados.
-
-Validación de identificaciones duplicadas.
-
-Ejecución correcta desde main.py.
-Reflexión
-La organización modular permite crear programas más ordenados, donde cada clase tiene una responsabilidad definida. La aplicación de principios SOLID facilita mantener y ampliar el sistema sin afectar las funcionalidades existentes.
+La organización modular permite crear programas más ordenados, donde cada clase tiene una responsabilidad definida. La aplicación de principios SOLID ayuda a mantener y ampliar el sistema de una manera más sencilla, evitando afectar las funcionalidades que ya existen.
